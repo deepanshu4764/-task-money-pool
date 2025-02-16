@@ -7,7 +7,7 @@ const tasks = {
     },
     task2: {
         name: "Make an eComm App",
-        money: "₹20000000",
+        money: "₹1600",
         description: "Build an eCommerce app to sell products."
     },
     task3: {
@@ -34,3 +34,11 @@ function goBack() {
     document.getElementById("taskList").style.display = "block";
     document.getElementById("taskDescription").style.display = "none";
 }
+
+// Load the money pool from localStorage
+window.onload = function() {
+    const savedPoolAmount = localStorage.getItem("moneyPool");
+    if (savedPoolAmount) {
+        document.getElementById("poolAmount").innerText = `₹${savedPoolAmount}`;
+    }
+};
