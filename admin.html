@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Update Money Pool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="moneyPool">
+        <h1>Update Money Pool</h1>
+        <label for="poolAmountInput">Enter Money Pool Amount: </label>
+        <input type="number" id="poolAmountInput" placeholder="Enter amount">
+        <button onclick="updateMoneyPool()">Update Pool</button>
+    </div>
+
+    <script>
+        function updateMoneyPool() {
+            const poolAmount = document.getElementById("poolAmountInput").value;
+            if (poolAmount) {
+                localStorage.setItem("moneyPool", poolAmount);
+                alert("Money pool updated!");
+                window.location.href = "index.html";  // Redirect back to the main page
+            } else {
+                alert("Please enter a valid amount.");
+            }
+        }
+
+        // Load the current money pool value if set
+        window.onload = function() {
+            const poolAmount = localStorage.getItem("moneyPool");
+            if (poolAmount) {
+                document.getElementById("poolAmountInput").value = poolAmount;
+            }
+        };
+    </script>
+</body>
+</html>

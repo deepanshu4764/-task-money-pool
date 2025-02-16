@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Money Pool and Tasks</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="moneyPool">
+        <h1>Money Pool This Month</h1>
+        <p id="poolAmount">₹3000</p>
+    </div>
+
+    <div id="taskList">
+        <h2>Tasks</h2>
+        <ul>
+            <li onclick="showTaskDetails('task1')">Create My Instagram Page (₹800)</li>
+            <li onclick="showTaskDetails('task2')">Make an eComm App (₹1600)</li>
+            <li onclick="showTaskDetails('task3')">Make My Personal Branding (₹1500)</li>
+        </ul>
+    </div>
+
+    <div id="taskDescription" style="display: none;">
+        <h3 id="taskName"></h3>
+        <p id="taskMoney"></p>
+        <p id="taskDetails"></p>
+        <button onclick="goBack()">Back</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
