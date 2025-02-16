@@ -8,10 +8,11 @@
 </head>
 <body>
 
-    <!-- Creator Name at Top Left -->
-    <div class="creator-name">Created by <span>Deepanshu</span></div>
+    <!-- Creator Image -->
+    <div class="creator-image">
+        <img src="A_stylish_and_modern_typographic_design_featuring_.png" alt="Created by Deepanshu">
+    </div>
 
-    <!-- Money Pool Update Section -->
     <div id="moneyPool">
         <h1>Update Money Pool</h1>
         <label for="poolAmountInput">Enter Money Pool Amount: </label>
@@ -25,13 +26,12 @@
             if (poolAmount) {
                 localStorage.setItem("moneyPool", poolAmount);
                 alert("Money pool updated!");
-                window.location.href = "index.html";  // Redirect back to the main page
+                window.location.href = "index.html";
             } else {
                 alert("Please enter a valid amount.");
             }
         }
 
-        // Load the current money pool value if set
         window.onload = function() {
             const poolAmount = localStorage.getItem("moneyPool");
             if (poolAmount) {
