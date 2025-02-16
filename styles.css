@@ -5,8 +5,26 @@ body {
     background-color: #f4f4f4;
 }
 
+/* Stylish "Created by Deepanshu" at Top Left */
+.creator-name {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    font-size: 22px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif; /* Uses a Google Font */
+    background: linear-gradient(45deg, #ff5733, #ffbd69); /* Gradient Effect */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
 h1, h2, h3 {
     color: #333;
+    text-align: center;
 }
 
 #moneyPool {
@@ -19,15 +37,18 @@ h1, h2, h3 {
 #taskList ul {
     list-style-type: none;
     padding: 0;
+    text-align: center;
 }
 
 #taskList li {
     background-color: #ffffff;
-    margin: 10px 0;
+    margin: 10px auto;
     padding: 10px;
     border-radius: 5px;
     cursor: pointer;
+    width: 60%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 #taskList li:hover {
@@ -37,8 +58,10 @@ h1, h2, h3 {
 #taskDescription {
     background-color: #ffffff;
     padding: 20px;
-    margin-top: 20px;
+    margin: 20px auto;
+    width: 70%;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 button {
@@ -49,8 +72,14 @@ button {
     border: none;
     cursor: pointer;
     border-radius: 5px;
+    font-size: 16px;
 }
 
 button:hover {
     background-color: #45a049;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
 }
