@@ -7,20 +7,27 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+
+    <!-- Creator Name at Top Left -->
+    <div class="creator-name">Created by <span>Deepanshu</span></div>
+
+    <!-- Money Pool Section -->
     <div id="moneyPool">
         <h1>Money Pool This Month</h1>
         <p id="poolAmount">₹3000</p>
     </div>
 
+    <!-- Task List Section -->
     <div id="taskList">
         <h2>Tasks</h2>
         <ul>
             <li onclick="showTaskDetails('task1')">Create My Instagram Page (₹800)</li>
-            <li onclick="showTaskDetails('task2')">Make an eComm App (₹13456789876543)</li>
+            <li onclick="showTaskDetails('task2')">Make an eComm App (₹1600)</li>
             <li onclick="showTaskDetails('task3')">Make My Personal Branding (₹1500)</li>
         </ul>
     </div>
 
+    <!-- Task Description Section (Initially Hidden) -->
     <div id="taskDescription" style="display: none;">
         <h3 id="taskName"></h3>
         <p id="taskMoney"></p>
