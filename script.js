@@ -7,7 +7,7 @@ const tasks = {
     },
     task2: {
         name: "Make an eComm App",
-        money: "₹1600",
+        money: "₹20000000",
         description: "Build an eCommerce app to sell products."
     },
     task3: {
