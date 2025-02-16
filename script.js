@@ -1,44 +1,36 @@
-// Task details data
-const tasks = {
-    task1: {
-        name: "Create My Instagram Page",
-        money: "₹800",
-        description: "Make with more links (can post)."
-    },
-    task2: {
-        name: "Make an eComm App",
-        money: "₹1600",
-        description: "Build an eCommerce app to sell products."
-    },
-    task3: {
-        name: "Make My Personal Branding",
-        money: "₹1500",
-        description: "Create a personal brand by posting videos on social media."
-    }
+window.onload = function () {
+    loadMoneyPool();
+    displayTasks();
 };
 
-// Function to show task details when clicked
-function showTaskDetails(taskId) {
-    const task = tasks[taskId];
+function displayTasks() {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    let taskList = document.getElementById("tasks");
+    taskList.innerHTML = "";
+
+    tasks.forEach((task, index) => {
+        let listItem = document.createElement("li");
+        listItem.innerHTML = `<strong>${task.name}</strong> - ${task.money}`;
+        listItem.onclick = function () {
+            showTaskDetails(index);
+        };
+        taskList.appendChild(listItem);
+    });
+}
+
+function showTaskDetails(index) {
+    let tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+    let task = tasks[index];
+
     document.getElementById("taskName").innerText = task.name;
     document.getElementById("taskMoney").innerText = task.money;
     document.getElementById("taskDetails").innerText = task.description;
 
-    // Hide the task list and show the task description
     document.getElementById("taskList").style.display = "none";
     document.getElementById("taskDescription").style.display = "block";
 }
 
-// Function to go back to the task list
 function goBack() {
     document.getElementById("taskList").style.display = "block";
     document.getElementById("taskDescription").style.display = "none";
 }
-
-// Load the money pool from localStorage
-window.onload = function() {
-    const savedPoolAmount = localStorage.getItem("moneyPool");
-    if (savedPoolAmount) {
-        document.getElementById("poolAmount").innerText = `₹${savedPoolAmount}`;
-    }
-};
