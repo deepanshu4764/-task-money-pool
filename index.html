@@ -4,82 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Pool and Tasks</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CDN -->
 </head>
-<body>
+<body class="bg-gray-100 font-sans">
 
     <!-- Creator Image -->
-    <div class="creator-image">
-        <img src="A_stylish_and_modern_typographic_design_featuring_.png" alt="Created by Deepanshu">
+    <div class="creator-image flex justify-start p-6">
+        <img src="A_stylish_and_modern_typographic_design_featuring_.png" alt="Created by Deepanshu" class="w-40 h-auto">
     </div>
 
     <!-- Money Pool Section -->
-    <div id="moneyPool">
-        <h1>Money Pool This Month</h1>
-        <p id="poolAmount">₹3000</p>  <!-- Default value -->
+    <div id="moneyPool" class="text-center p-6 bg-green-500 text-white rounded-lg shadow-lg max-w-md mx-auto my-6">
+        <h1 class="text-3xl font-bold">Money Pool This Month</h1>
+        <p id="poolAmount" class="text-2xl">₹3000</p>
     </div>
 
     <!-- Task List Section -->
-    <div id="taskList">
-        <h2>Tasks</h2>
-        <ul id="tasks"></ul>
+    <div id="taskList" class="container mx-auto p-6">
+        <h2 class="text-2xl font-semibold mb-4">Tasks</h2>
+        <ul id="tasks" class="space-y-4">
+            <!-- Tasks will be dynamically added here -->
+        </ul>
     </div>
 
     <!-- Task Description Section (Initially Hidden) -->
-    <div id="taskDescription" style="display: none;">
-        <h3 id="taskName"></h3>
-        <p id="taskMoney"></p>
-        <p id="taskDetails"></p>
-        <button onclick="goBack()">Back</button>
+    <div id="taskDescription" style="display: none;" class="container mx-auto p-6 bg-white rounded-lg shadow-lg">
+        <h3 id="taskName" class="text-xl font-semibold"></h3>
+        <p id="taskMoney" class="text-lg font-semibold"></p>
+        <p id="taskDetails" class="text-gray-700 mt-2"></p>
+        <button onclick="goBack()" class="mt-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Back</button>
     </div>
 
-    <script>
-        // Load the Money Pool amount from localStorage
-        window.onload = function () {
-            const savedPoolAmount = localStorage.getItem("moneyPool"); // Get saved amount
-            if (savedPoolAmount) {
-                document.getElementById("poolAmount").innerText = `₹${savedPoolAmount}`; // Display updated value
-            }
-
-            // Call function to display tasks from localStorage
-            displayTasks();
-        };
-
-        // Function to display tasks dynamically (from localStorage)
-        function displayTasks() {
-            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-            const taskList = document.getElementById("tasks");
-            taskList.innerHTML = ""; // Clear existing list
-
-            tasks.forEach((task, index) => {
-                const listItem = document.createElement("li");
-                listItem.innerHTML = `<strong>${task.name}</strong> - ${task.money}`;
-                listItem.onclick = function () {
-                    showTaskDetails(index);
-                };
-                taskList.appendChild(listItem);
-            });
-        }
-
-        // Function to show task details
-        function showTaskDetails(index) {
-            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-            const task = tasks[index];
-
-            document.getElementById("taskName").innerText = task.name;
-            document.getElementById("taskMoney").innerText = task.money;
-            document.getElementById("taskDetails").innerText = task.description;
-
-            document.getElementById("taskList").style.display = "none";
-            document.getElementById("taskDescription").style.display = "block";
-        }
-
-        // Go back to the task list
-        function goBack() {
-            document.getElementById("taskList").style.display = "block";
-            document.getElementById("taskDescription").style.display = "none";
-        }
-    </script>
-
+    <script src="script.js"></script>
 </body>
 </html>
