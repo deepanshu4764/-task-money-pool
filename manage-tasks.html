@@ -28,15 +28,54 @@
         <button onclick="addTask()" class="mt-6 w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">Add Task</button>
     </div>
 
-    <div id="taskList" class="max-w-lg mx-auto p-6 mt-6 bg-white rounded-lg shadow-lg">
-        <h2 class="text-2xl font-semibold text-center mb-4">Task List</h2>
-        <ul id="tasks" class="space-y-4">
-            <!-- Tasks will be displayed here -->
-        </ul>
+    <!-- Social Media Links Section -->
+    <div id="socialMediaLinks" class="max-w-lg mx-auto p-6 mt-6 bg-white rounded-lg shadow-lg">
+        <h2 class="text-2xl font-semibold text-center mb-4">Manage Social Media Links</h2>
+
+        <label for="facebookLink" class="block text-sm font-medium text-gray-700">Facebook Link</label>
+        <input type="text" id="facebookLink" class="block w-full p-2 mt-2 border border-gray-300 rounded" placeholder="Enter Facebook URL">
+
+        <label for="twitterLink" class="block text-sm font-medium text-gray-700 mt-4">Twitter Link</label>
+        <input type="text" id="twitterLink" class="block w-full p-2 mt-2 border border-gray-300 rounded" placeholder="Enter Twitter URL">
+
+        <label for="linkedinLink" class="block text-sm font-medium text-gray-700 mt-4">LinkedIn Link</label>
+        <input type="text" id="linkedinLink" class="block w-full p-2 mt-2 border border-gray-300 rounded" placeholder="Enter LinkedIn URL">
+
+        <label for="instagramLink" class="block text-sm font-medium text-gray-700 mt-4">Instagram Link</label>
+        <input type="text" id="instagramLink" class="block w-full p-2 mt-2 border border-gray-300 rounded" placeholder="Enter Instagram URL">
+
+        <button onclick="saveLinks()" class="mt-6 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Save Links</button>
     </div>
 
-    <button onclick="saveTasks()" class="mt-6 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Save & Apply</button>
+    <script>
+        // Save Social Media Links to localStorage
+        function saveLinks() {
+            const facebookLink = document.getElementById("facebookLink").value;
+            const twitterLink = document.getElementById("twitterLink").value;
+            const linkedinLink = document.getElementById("linkedinLink").value;
+            const instagramLink = document.getElementById("instagramLink").value;
 
-    <script src="manage-tasks.js"></script>
+            const socialLinks = {
+                facebook: facebookLink,
+                twitter: twitterLink,
+                linkedin: linkedinLink,
+                instagram: instagramLink
+            };
+
+            localStorage.setItem("socialLinks", JSON.stringify(socialLinks));
+            alert("Social media links saved!");
+        }
+
+        // Load existing links from localStorage
+        window.onload = function() {
+            const savedLinks = JSON.parse(localStorage.getItem("socialLinks"));
+            if (savedLinks) {
+                document.getElementById("facebookLink").value = savedLinks.facebook || '';
+                document.getElementById("twitterLink").value = savedLinks.twitter || '';
+                document.getElementById("linkedinLink").value = savedLinks.linkedin || '';
+                document.getElementById("instagramLink").value = savedLinks.instagram || '';
+            }
+        };
+    </script>
 </body>
 </html>
