@@ -16,7 +16,7 @@
     <!-- Money Pool Section -->
     <div id="moneyPool">
         <h1>Money Pool This Month</h1>
-        <p id="poolAmount">₹3000</p>
+        <p id="poolAmount">₹3000</p>  <!-- Default value -->
     </div>
 
     <!-- Task List Section -->
@@ -33,6 +33,53 @@
         <button onclick="goBack()">Back</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Load the Money Pool amount from localStorage
+        window.onload = function () {
+            const savedPoolAmount = localStorage.getItem("moneyPool"); // Get saved amount
+            if (savedPoolAmount) {
+                document.getElementById("poolAmount").innerText = `₹${savedPoolAmount}`; // Display updated value
+            }
+
+            // Call function to display tasks from localStorage
+            displayTasks();
+        };
+
+        // Function to display tasks dynamically (from localStorage)
+        function displayTasks() {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            const taskList = document.getElementById("tasks");
+            taskList.innerHTML = ""; // Clear existing list
+
+            tasks.forEach((task, index) => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `<strong>${task.name}</strong> - ${task.money}`;
+                listItem.onclick = function () {
+                    showTaskDetails(index);
+                };
+                taskList.appendChild(listItem);
+            });
+        }
+
+        // Function to show task details
+        function showTaskDetails(index) {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            const task = tasks[index];
+
+            document.getElementById("taskName").innerText = task.name;
+            document.getElementById("taskMoney").innerText = task.money;
+            document.getElementById("taskDetails").innerText = task.description;
+
+            document.getElementById("taskList").style.display = "none";
+            document.getElementById("taskDescription").style.display = "block";
+        }
+
+        // Go back to the task list
+        function goBack() {
+            document.getElementById("taskList").style.display = "block";
+            document.getElementById("taskDescription").style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
