@@ -21,10 +21,11 @@
     </div>
 
     <script>
+        // Update Money Pool in localStorage
         function updateMoneyPool() {
             const poolAmount = document.getElementById("poolAmountInput").value;
             if (poolAmount) {
-                localStorage.setItem("moneyPool", poolAmount);
+                localStorage.setItem("moneyPool", poolAmount);  // Save the updated amount to localStorage
                 alert("Money pool updated!");
                 window.location.href = "index.html";  // Redirect to main page
             } else {
@@ -32,6 +33,7 @@
             }
         }
 
+        // Load the current Money Pool value if it exists
         window.onload = function() {
             const poolAmount = localStorage.getItem("moneyPool");
             if (poolAmount) {
