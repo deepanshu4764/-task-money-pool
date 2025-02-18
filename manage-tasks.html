@@ -44,6 +44,9 @@
         <label for="instagramLink" class="block text-sm font-medium text-gray-700 mt-4">Instagram Link</label>
         <input type="text" id="instagramLink" class="block w-full p-2 mt-2 border border-gray-300 rounded" placeholder="Enter Instagram URL">
 
+        <label for="youtubeLink" class="block text-sm font-medium text-gray-700 mt-4">YouTube Link</label>
+        <input type="text" id="youtubeLink" class="block w-full p-2 mt-2 border border-gray-300 rounded" placeholder="Enter YouTube URL">
+
         <button onclick="saveLinks()" class="mt-6 w-full bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Save Links</button>
     </div>
 
@@ -54,12 +57,14 @@
             const twitterLink = document.getElementById("twitterLink").value;
             const linkedinLink = document.getElementById("linkedinLink").value;
             const instagramLink = document.getElementById("instagramLink").value;
+            const youtubeLink = document.getElementById("youtubeLink").value;
 
             const socialLinks = {
                 facebook: facebookLink,
                 twitter: twitterLink,
                 linkedin: linkedinLink,
-                instagram: instagramLink
+                instagram: instagramLink,
+                youtube: youtubeLink
             };
 
             localStorage.setItem("socialLinks", JSON.stringify(socialLinks));
@@ -74,6 +79,7 @@
                 document.getElementById("twitterLink").value = savedLinks.twitter || '';
                 document.getElementById("linkedinLink").value = savedLinks.linkedin || '';
                 document.getElementById("instagramLink").value = savedLinks.instagram || '';
+                document.getElementById("youtubeLink").value = savedLinks.youtube || '';
             }
         };
     </script>
