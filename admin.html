@@ -4,34 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin - Update Money Pool</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CDN -->
 </head>
-<body>
+<body class="bg-gray-200 font-sans">
 
     <!-- Creator Image -->
-    <div class="creator-image">
-        <img src="A_stylish_and_modern_typographic_design_featuring_.png" alt="Created by Deepanshu">
+    <div class="creator-image flex justify-start p-6">
+        <img src="A_stylish_and_modern_typographic_design_featuring_.png" alt="Created by Deepanshu" class="w-40 h-auto">
     </div>
 
-    <div id="moneyPool">
-        <h1>Update Money Pool</h1>
-        <label for="poolAmountInput">Enter Money Pool Amount: </label>
-        <input type="number" id="poolAmountInput" placeholder="Enter amount">
-        <button onclick="updateMoneyPool()">Update Pool</button>
+    <div id="moneyPool" class="text-center p-6 bg-white rounded-lg shadow-lg max-w-md mx-auto my-6">
+        <h1 class="text-3xl font-bold">Update Money Pool</h1>
+        <label for="poolAmountInput" class="block text-sm font-medium text-gray-700">Enter Money Pool Amount</label>
+        <input type="number" id="poolAmountInput" class="block w-full p-2 mt-2 border border-gray-300 rounded" placeholder="Enter amount">
+        <button onclick="updateMoneyPool()" class="mt-4 w-full bg-green-500 text-white p-2 rounded hover:bg-green-600">Update Pool</button>
     </div>
 
     <script>
-    function updateMoneyPool() {
-    const poolAmount = document.getElementById("poolAmountInput").value;
-    if (poolAmount) {
-        localStorage.setItem("moneyPool", poolAmount);  // Save the new pool amount to localStorage
-        alert("Money pool updated!");
-        window.location.href = "index.html";  // Redirect to main page
-    } else {
-        alert("Please enter a valid amount.");
-    }
-}
-
+        function updateMoneyPool() {
+            const poolAmount = document.getElementById("poolAmountInput").value;
+            if (poolAmount) {
+                localStorage.setItem("moneyPool", poolAmount);
+                alert("Money pool updated!");
+                window.location.href = "index.html";  // Redirect to main page
+            } else {
+                alert("Please enter a valid amount.");
+            }
+        }
 
         window.onload = function() {
             const poolAmount = localStorage.getItem("moneyPool");
