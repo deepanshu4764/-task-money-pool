@@ -5,8 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Money Pool and Tasks</title>
     <script src="https://cdn.tailwindcss.com"></script> <!-- Tailwind CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome CDN -->
 </head>
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 font-sans relative">
+
+    <!-- Social Media Icons - Top Right -->
+    <div class="absolute top-6 right-6 flex space-x-4">
+        <a id="facebookIcon" href="#" target="_blank" class="text-blue-600 hover:text-blue-800">
+            <i class="fab fa-facebook-square text-3xl"></i>
+        </a>
+        <a id="twitterIcon" href="#" target="_blank" class="text-blue-400 hover:text-blue-600">
+            <i class="fab fa-twitter-square text-3xl"></i>
+        </a>
+        <a id="linkedinIcon" href="#" target="_blank" class="text-blue-700 hover:text-blue-900">
+            <i class="fab fa-linkedin text-3xl"></i>
+        </a>
+        <a id="instagramIcon" href="#" target="_blank" class="text-pink-500 hover:text-pink-700">
+            <i class="fab fa-instagram-square text-3xl"></i>
+        </a>
+    </div>
 
     <!-- Creator Image -->
     <div class="creator-image flex justify-start p-6">
@@ -16,7 +33,7 @@
     <!-- Money Pool Section -->
     <div id="moneyPool" class="text-center p-6 bg-green-500 text-white rounded-lg shadow-lg max-w-md mx-auto my-6">
         <h1 class="text-3xl font-bold">Money Pool This Month</h1>
-        <p id="poolAmount" class="text-2xl">₹3000</p>  <!-- Default value, will be updated from localStorage -->
+        <p id="poolAmount" class="text-2xl">₹3000</p>
     </div>
 
     <!-- Task List Section -->
@@ -43,6 +60,15 @@
                 document.getElementById("poolAmount").innerText = `₹${savedPoolAmount}`; // Display updated value
             }
             displayTasks();  // Call function to display tasks
+
+            // Load the social media links from localStorage
+            const savedLinks = JSON.parse(localStorage.getItem("socialLinks"));
+            if (savedLinks) {
+                document.getElementById("facebookIcon").href = savedLinks.facebook || "#";
+                document.getElementById("twitterIcon").href = savedLinks.twitter || "#";
+                document.getElementById("linkedinIcon").href = savedLinks.linkedin || "#";
+                document.getElementById("instagramIcon").href = savedLinks.instagram || "#";
+            }
         };
 
         // Function to display tasks dynamically (from localStorage)
