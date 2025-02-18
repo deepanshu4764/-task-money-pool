@@ -21,16 +21,17 @@
     </div>
 
     <script>
-        function updateMoneyPool() {
-            const poolAmount = document.getElementById("poolAmountInput").value;
-            if (poolAmount) {
-                localStorage.setItem("moneyPool", poolAmount);
-                alert("Money pool updated!");
-                window.location.href = "index.html";
-            } else {
-                alert("Please enter a valid amount.");
-            }
-        }
+    function updateMoneyPool() {
+    const poolAmount = document.getElementById("poolAmountInput").value;
+    if (poolAmount) {
+        localStorage.setItem("moneyPool", poolAmount);  // Save the new pool amount to localStorage
+        alert("Money pool updated!");
+        window.location.href = "index.html";  // Redirect to main page
+    } else {
+        alert("Please enter a valid amount.");
+    }
+}
+
 
         window.onload = function() {
             const poolAmount = localStorage.getItem("moneyPool");
