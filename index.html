@@ -16,7 +16,7 @@
     <!-- Money Pool Section -->
     <div id="moneyPool" class="text-center p-6 bg-green-500 text-white rounded-lg shadow-lg max-w-md mx-auto my-6">
         <h1 class="text-3xl font-bold">Money Pool This Month</h1>
-        <p id="poolAmount" class="text-2xl">₹3000</p>
+        <p id="poolAmount" class="text-2xl">₹3000</p>  <!-- Default value, will be updated from localStorage -->
     </div>
 
     <!-- Task List Section -->
@@ -35,6 +35,51 @@
         <button onclick="goBack()" class="mt-4 bg-blue-500 text-white p-2 rounded hover:bg-blue-600">Back</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        // Load the Money Pool amount from localStorage when the page loads
+        window.onload = function () {
+            const savedPoolAmount = localStorage.getItem("moneyPool"); // Get saved amount
+            if (savedPoolAmount) {
+                document.getElementById("poolAmount").innerText = `₹${savedPoolAmount}`; // Display updated value
+            }
+            displayTasks();  // Call function to display tasks
+        };
+
+        // Function to display tasks dynamically (from localStorage)
+        function displayTasks() {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            const taskList = document.getElementById("tasks");
+            taskList.innerHTML = ""; // Clear existing list
+
+            tasks.forEach((task, index) => {
+                const listItem = document.createElement("li");
+                listItem.innerHTML = `<strong>${task.name}</strong> - ${task.money}`;
+                listItem.onclick = function () {
+                    showTaskDetails(index);
+                };
+                taskList.appendChild(listItem);
+            });
+        }
+
+        // Function to show task details
+        function showTaskDetails(index) {
+            const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+            const task = tasks[index];
+
+            document.getElementById("taskName").innerText = task.name;
+            document.getElementById("taskMoney").innerText = task.money;
+            document.getElementById("taskDetails").innerText = task.description;
+
+            document.getElementById("taskList").style.display = "none";
+            document.getElementById("taskDescription").style.display = "block";
+        }
+
+        // Go back to the task list
+        function goBack() {
+            document.getElementById("taskList").style.display = "block";
+            document.getElementById("taskDescription").style.display = "none";
+        }
+    </script>
+
 </body>
 </html>
